@@ -1,0 +1,74 @@
+//media queries
+@mixin tablet {
+    @media screen and (min-width: #{$tablet-width}) {
+        @content; 
+        
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: #{$desktop-width}) {
+        @content; 
+    
+    }
+}
+
+
+//mixins
+@mixin flex-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex; 
+}
+
+@mixin widget {
+    padding: $leftRight_padding;
+    border-bottom: 1px solid $medium-gray;
+    
+    @include desktop {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .widget-title {
+        color: $dark-gray;
+        margin: 0 auto 0 0;
+        margin-bottom: 1em;
+    }
+}
+
+@mixin dbl-widget {
+    @include widget;
+    flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+    }
+
+    div {
+        width: 100%;
+        padding: 1.5em 0;
+    }
+
+    div:first-child {
+        flex-grow: 1;
+        border-bottom: 1px solid $medium-gray;
+
+        @include tablet {
+            padding-right: 1.5em;
+            border-bottom: none;
+            border-right: 1px solid $medium-gray;
+        }
+    }
+
+    div:last-child {
+        flex-grow: 1;
+
+        @include tablet {
+            padding-left: 1.5em;
+        }
+
+    }
+}
